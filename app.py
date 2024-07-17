@@ -1,21 +1,31 @@
-# app/routes.py
-
-from flask import Blueprint, jsonify
+from flask import Flask, jsonify,render_template
+from app import create_app
 import psycopg2
 import os
 
-main = Blueprint('main', __name__)
+
+
+app = create_app()
+app = Flask(__name__)
+app.config['POSTGRES_HOST'] = os.getenv('DB_HOST')
+app.config['POSTGRES_USER'] = os.getenv('DB_USER')
+app.config['POSTGRES_PASSWORD'] = os.getenv('DB_PASSWORD')
+app.config['POSTGRES_DB'] = os.getenv('DB_NAME')
 
 def connect_to_database():
     conn = psycopg2.connect(
-        host=os.getenv('DB_HOST'),
-        user=os.getenv('DB_USER'),
-        password=os.getenv('DB_PASSWORD'),
-        dbname=os.getenv('DB_NAME')
+        host=app.config['POSTGRES_HOST'],
+        user=app.config['POSTGRES_USER'],
+        password=app.config['POSTGRES_PASSWORD'],
+        dbname=app.config['POSTGRES_DB']
     )
     return conn
 
-@main.route('/api', methods=["GET"])
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+@app.route('/api', methods=["GET"])
 def api():
     try:
         conn = connect_to_database()
@@ -40,3 +50,8 @@ def api():
 
     except Exception as e:
         return jsonify({'error': str(e)})
+
+
+if __name__ == "__main__":
+    DEBUG_MODE =os.getenv('DEBUG_MODE')=='True'
+    app.run(debug=DEBUG_MODE)
