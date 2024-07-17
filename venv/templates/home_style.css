@@ -1,0 +1,246 @@
+body {
+    margin: 0;
+    font-family: "Arial", sans-serif;
+    background-color: #fff;
+    color: #000;
+}
+
+header {
+    background-color: #fff;
+    color: #000;
+    padding: 2vh 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.logo{
+    object-fit: cover;
+    border-radius: 50%;
+    width: 5vw;
+    height: 5vw;  
+}
+.logodiv{
+    width: 5vw;
+    height: 5vh;
+}
+nav{
+  width: 100vw;
+
+} 
+nav ul {
+  margin-top: 1vh;
+  margin-left: 52vw;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+nav li {
+  margin-right: 2vw;
+}
+
+nav a {
+  color: #000;
+  text-decoration: none;
+  transition: font-size 0.8s ease;
+  font-size: 1vw;
+  padding: 1vh 2vw;
+}
+
+nav a:hover {
+  color: #de06ff;
+  font-size: 0.9vw;
+}
+
+.nav-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 2vw;
+  padding: 0.5em;
+}
+
+.nav-toggle i {
+  font-size: 1.5em;
+  margin-left: 28em;
+}
+
+/* Media Query for Responsive Design */
+
+@media only screen and (max-width: 768px) {
+  nav { 
+    z-index: 1000; 
+}
+  nav ul {
+    
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 40em;
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+  }
+  
+  nav li {
+      margin-right: 0;
+      margin-left: 2vw;
+    }
+
+    nav a {
+      font-size: 2.5vw;
+    }
+    nav a:hover {
+      color: #de06ff;
+      font-size: 2vw;
+    }
+
+    .nav-toggle {
+      display: block;
+      z-index: 1000; 
+    }
+
+    .nav-toggle.active i {
+      transform: rotate(90deg);
+     
+    }
+
+    nav.active ul {
+      transform: translateX(0);
+    }
+  }
+
+  /* Icon toggle animation */
+
+  .nav-toggle i {
+    transition: transform 0.5s ease;
+    z-index: 1000; 
+  }
+
+  .nav-toggle.active i {
+    transform: rotate(90deg);
+    z-index: 1000; 
+}
+  
+section {
+    padding: 5vh 5vw;
+}
+
+.home_pg_body{
+    width: 100vw;
+    height: 20em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 6em;
+}
+.profile-photo {
+    width: 50%;
+    height: 65%;
+   
+}
+
+
+.profile-photo img {
+    width: 35vw; 
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: -7vh;
+}
+
+/* Photo bounce and roted animation */
+
+#animated-photo{
+    animation: rotate 4s linear;
+  }
+  
+  
+  
+  
+  @keyframes rotate {
+    0% {
+      transform: rotateY(0deg);
+    }
+    100% {
+      transform: rotateY(360deg);
+    }
+  }
+  
+  
+
+.intro{
+    width: 50%;
+    height: 50%;;
+}
+
+.self{
+    font-size: 1.5vw;
+}
+h4{
+    font-size: 2.2vw;
+}
+
+.intro h4 {
+    overflow: hidden; 
+    white-space: nowrap; 
+    margin-right: 24vw; 
+    font-size: 2.4vw; 
+    border-right: .15em solid orange;
+    animation: typing 2s steps(250, end); 
+   
+  }
+  
+  /* Keyframes for typing animation */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 53%;
+    }
+  }
+.icon{
+    font-size: 2vw;
+    margin: 1.2vw;
+    transition: font-size 0.5s ease;
+}
+
+.icon:hover{
+   font-size: 1.6vw;
+}
+
+/* Media Query for Responsive Design */
+@media only screen and (max-width: 768px) {
+    header {
+        padding: 5vh 5vw;
+        justify-content: space-around;
+    }
+    
+    h4{
+        font-size: 2vw;
+    }  
+    .logo {
+        margin-bottom: -5vw;
+    }
+    .profile-photo {
+        width: 50%;
+        height: 50%;
+       margin-top: 4.5em;
+    }
+
+    .home_pg_body{
+        width: 100vw;
+        height: 20em;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 2em;
+    }
+}
+
