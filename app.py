@@ -1,4 +1,5 @@
 from flask import Flask, jsonify,render_template
+from flask_cors import CORS
 import psycopg2
 import os
 
@@ -6,6 +7,7 @@ import os
 
 
 app = Flask(__name__)
+CORS(app)
 app.config['POSTGRES_HOST'] = os.getenv('DB_HOST')
 app.config['POSTGRES_USER'] = os.getenv('DB_USER')
 app.config['POSTGRES_PASSWORD'] = os.getenv('DB_PASSWORD')
