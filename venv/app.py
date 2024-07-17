@@ -1,27 +1,36 @@
 from flask import Flask, jsonify,make_response
-from flask_mysqldb import MySQL
-from flask_cors import CORS
+import psycopg2
+import os
+
 import traceback
 import os
 
 app = Flask(__name__)
-CORS(app)
-app.config['MYSQL_HOST'] = os.getenv('DB_HOST')
-app.config['MYSQL_USER'] = os.getenv('DB_USER')
-app.config['MYSQL_PASSWORD'] = os.getenv('DB_PASSWORD')
-app.config['MYSQL_DB'] = os.getenv('DB_NAME')
+app.config['POSTGRES_HOST'] = os.getenv('DB_HOST')
+app.config['POSTGRES_USER'] = os.getenv('DB_USER')
+app.config['POSTGRES_PASSWORD'] = os.getenv('DB_PASSWORD')
+app.config['POSTGRES_DB'] = os.getenv('DB_NAME')
+
+def connect_to_database():
+    conn = psycopg2.connect(
+        host=app.config['POSTGRES_HOST'],
+        user=app.config['POSTGRES_USER'],
+        password=app.config['POSTGRES_PASSWORD'],
+        dbname=app.config['POSTGRES_DB']
+    )
+    return conn
 
 
-mysql = MySQL(app)
 
-@app.route('/api', methods=["POST"])
+@app.route('/api', methods=["GET"])
 def api():
     try:
-        cur = mysql.connection.cursor()
-        cur.execute("use ml_projects")
+        conn = connect_to_database()
+        cur = conn.cursor()
         cur.execute('SELECT * FROM projects')
         data = cur.fetchall()
         cur.close()
+        conn.close()
 
         # Structure data into JSON format
         json_data = []
@@ -37,8 +46,8 @@ def api():
         return jsonify(json_data)
 
     except Exception as e:
-        traceback.print_exc()  
-        return make_response(jsonify({"error": str(e)}), 500)
+        return jsonify({'error': str(e)})
+
 
 if __name__ == "__main__":
     DEBUG_MODE =os.getenv('DEBUG_MODE')=='True'
