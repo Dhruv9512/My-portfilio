@@ -4,4 +4,4 @@ COPY . /app
 
 RUN pip install
 
-CMD [ "python","gunicorn","main:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:8000", "main:app"]
