@@ -22,9 +22,18 @@ def connect_to_database():
     )
     return conn
 
-@app.route('/')
+@app.route('/home')
 def home():
     return render_template('home.html')
+@app.route('/contact')
+def home():
+    return render_template('contact.html')
+@app.route('/about')
+def home():
+    return render_template('about.html')
+@app.route('/mywork')
+def home():
+    return render_template('mywork.html')
 
 @app.route('/api', methods=["GET"])
 def api():
