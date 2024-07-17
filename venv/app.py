@@ -1,10 +1,13 @@
 from flask import Flask, jsonify,make_response
+from app import create_app
 import psycopg2
 import os
 
 import traceback
 import os
 
+
+app = create_app()
 app = Flask(__name__)
 app.config['POSTGRES_HOST'] = os.getenv('DB_HOST')
 app.config['POSTGRES_USER'] = os.getenv('DB_USER')
