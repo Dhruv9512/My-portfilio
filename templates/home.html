@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header Navigation</title>
-    <link rel="stylesheet" href="home_style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home_style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header>
         <div class="logodiv">
-          <img src="logo.png" alt="Logo" class="logo">
+          <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
         </div>
         <nav>
           <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="mywork.html">Projects</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('projects') }}">Projects</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
           </ul>
         </nav>
         <div class="nav-toggle">
@@ -28,7 +28,7 @@
 
 <div class="home_pg_body">
 <div class="profile-photo">
-    <img src="d1.png" alt="Profile Photo" class="animated-photo" id="animated-photo">
+    <img src="{{ url_for('static', filename='d1.png') }}" alt="Profile Photo" class="animated-photo" id="animated-photo">
     
 </div>
 <div class="intro">
@@ -36,16 +36,13 @@
     <H4>I AM DHRUV SHARMA</H4>
     <P class="self">My Portfolio is a representation of all that I've Learned and</P>
     <p class="self"> accomplished as  a B.C.A Student.</P><br>
-    <a href="https://www.instagram.com/mrdhruv1234?igsh=dW55ZTE3ZWRvem1p" class="icon"><i class="fa-brands fa-instagram" class="icon"></i></a>
-    <a href="https://www.linkedin.com/in/dhruv-sharma-89516b284?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="icon"><i class="fa-brands fa-linkedin" class="icon"></i></a>
-    <a href="https://twitter.com/" class="icon"><i class="fa-brands fa-twitter" class="icon"></i></a>
-    <a href="https://www.facebook.com/" class="icon"><i class="fa-brands fa-facebook" class="icon"></i></a>
+    <a href="https://www.instagram.com/mrdhruv1234?igsh=dW55ZTE3ZWRvem1p" class="icon"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/in/dhruv-sharma-89516b284?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="icon"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="https://twitter.com/" class="icon"><i class="fa-brands fa-twitter"></i></a>
+    <a href="https://www.facebook.com/" class="icon"><i class="fa-brands fa-facebook"></i></a>
 </div>
 </div>
 
-
-<script src="home_app.js"></script>
+<script src="{{ url_for('static', filename='home_app.js') }}"></script>
 </body>
 </html>
-
-

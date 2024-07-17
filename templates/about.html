@@ -3,47 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header Navigation</title>
-    <link rel="stylesheet" href="about_style.css">
+    <title>About Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='about_style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
-    <header>
-        <div class="logodiv">
-          <img src="logo.png" alt="Logo" class="logo">
-        </div>
-        <nav>
-          <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="mywork.html">Projects</a></li>
-            <li><a href="contact.html">contact</a></li>
-          </ul>
-        </nav>
-        <div class="nav-toggle">
-          <i class="fas fa-bars"></i>
-        </div>
-        
-      </header>
+<header>
+    <div class="logodiv">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('projects') }}">Projects</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="nav-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+</header>
 
 <div class="home_pg_body">
-<div class="profile-photo">
-    <img src="d1.png" alt="Profile Photo" class="animated-photo" id="animated-photo">
-    
-</div>
-<div class="pg_intro">
-   <h2><u>About me!</u> </h2>
-   <p>I am a good timekeeper, always willing to learn new skills. I am friendly, helpful and polite,<br> have a good sense of humour.I am able to work independently in busy environments <br>and also within a team setting. I am outgoing and <br> tactful, and able to listen effectively when solving problems.</p>
-   <p>I am a punctual and motivated individual who is able to work in a busy environment <br>and produce high standards of work. I am an excellent team worker and am able to <br>take instructions from all levels and build up good working relationships with all colleagues. <br>I am flexible, reliable and possess excellent time keeping skills.</p>
-   <p>I am a dedicated, organized and methodical individual. I have good interpersonal skills,<br> am an excellent team worker and am keen and very willing to learn and develop new skills. <br>I am reliable and dependable and often seek new responsibilities within a wide range <br>of employment areas.I have an active and dynamic approach to work and getting things done. <br>I am determined and decisive. I identify and develop opportunities.</p>
-   
-</div>
+    <div class="profile-photo">
+        <img src="{{ url_for('static', filename='d1.png') }}" alt="Profile Photo" class="animated-photo" id="animated-photo">
+    </div>
+    <div class="pg_intro">
+       <h2><u>About me!</u> </h2>
+       <p>I am a good timekeeper, always willing to learn new skills. I am friendly, helpful and polite, have a good sense of humour.</p>
+       <!-- Add more content as per your needs -->
+    </div>
 </div>
 
-
-<script src="about_app.js"></script>
+<script src="{{ url_for('static', filename='about_app.js') }}"></script>
 </body>
 </html>
-
-
