@@ -1,0 +1,10 @@
+# run.py
+
+from app import create_app
+import os
+
+app = create_app()
+
+if __name__ == "__main__":
+    DEBUG_MODE = os.getenv('DEBUG_MODE', '').lower() == 'true'
+    app.run(debug=DEBUG_MODE)
