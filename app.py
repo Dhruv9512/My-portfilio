@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify,request
 from flask_cors import CORS
 import psycopg2
 import os
@@ -12,6 +12,7 @@ app.config['POSTGRES_USER'] = os.getenv('DB_USER')
 app.config['POSTGRES_PASSWORD'] = os.getenv('DB_PASSWORD')
 app.config['POSTGRES_DB'] = os.getenv('DB_NAME')
 
+
 def connect_to_database():
     conn = psycopg2.connect(
         host=app.config['POSTGRES_HOST'],
@@ -20,6 +21,7 @@ def connect_to_database():
         dbname=app.config['POSTGRES_DB']
     )
     return conn
+
 
 @app.route('/api', methods=["POST"])
 def api():
@@ -49,6 +51,7 @@ def api():
             return jsonify({'error': str(e)})
     else:
         return jsonify({'error': 'Method not allowed'}), 405
+
 
 if __name__ == "__main__":
     DEBUG_MODE = os.getenv('DEBUG_MODE') == 'True'
